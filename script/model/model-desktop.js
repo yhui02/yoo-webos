@@ -136,9 +136,20 @@ define(function(require, exports, module) {
 			
 			// tab 点击事件
 			$('#tab-header-'+id).click(function(e){
-				if (e.which == 2) {
+				if (e.which == 2) { // 中键点击
+					var _nextTabId;
+					if ($(this).hasClass('tab-strip-active')) {
+							_nextTabId = $(this).prev().attr('data-id');
+						if (_nextTabId == undefined)
+							_nextTabId = $(this).next().attr('data-id');
+					}
+					
+					// delete this
 					$(this).remove();
 					$('#tab-con-'+id).remove();
+					// open next
+					if (_nextTabId != undefined)
+						exports.tabRender(_nextTabId);
 					return false;
 				}
 			})
