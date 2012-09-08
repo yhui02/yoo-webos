@@ -38,10 +38,10 @@ define(function(require, exports, module) {
 			// item tab
 			localStorage.label = localStorage.label || 'lable1';
 			var _labelAct = function(){
-				$('.roles-tab li.tab').removeClass('active');
+				$('.roles-tab .tab').removeClass('active');
 				$('.roles-tab a[data-id="'+localStorage.label+'"]').parent().addClass('active');
 			}
-			$('.roles-tab .label').click(function(){
+			$('.roles-tab .tab a').click(function(){
 				localStorage.label = $(this).attr('data-id');
 				_labelAct();
 			}) 
@@ -80,19 +80,16 @@ define(function(require, exports, module) {
 			T.inputDefaultValue('buddysearch_input');
 			
 			// item ctrls
-			var menuCtrlVal = $('.role-admin').html();
 			$('.role-admin').click(function() {
 				var conMenuObj = $('#con-menu'), conMainObj = $('#con-main');
 				if (conMenuObj.is(":visible")) {
 					conMenuObj.hide();
 					conMainObj.removeClass('with_menu');
-					$(this).html('»展开');
 				} else {
 					conMenuObj.show();
 					conMainObj.addClass('with_menu');
-					$(this).html(menuCtrlVal);
 				}
-			})
+			});
 			
 			// item hover
 			$('#con-menu-results .menu-item').each(function() {
@@ -149,9 +146,15 @@ define(function(require, exports, module) {
 					$('#tab-con-'+id).remove();
 					// open next
 					if (_nextTabId != undefined)
-						exports.tabRender(_nextTabId);
+						$('#con-menu-results a[data-id="'+_nextTabId+'"]').trigger('click');
 					return false;
 				}
+			}).dblclick(function(){
+				var bodyObj = $('body');
+				if (bodyObj.hasClass('fullScreen'))
+					bodyObj.removeClass('fullScreen');
+				else
+					bodyObj.addClass('fullScreen');
 			})
 		} else {
 			_tabShow(id);

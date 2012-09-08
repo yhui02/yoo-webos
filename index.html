@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8" />
 <title>Yoo desktop</title>
-<script data-main="script/main" src="script/require.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
+<script data-main="script/main" src="script/require.min.js"></script>
 </head>
 
 <body>
 	<div id="body">
 		<div id="header">
-			<h1 id="logo"><a href="./"><img src="images/logo.png" style="padding-top:9px;height:20px;" /></a></h1>
+			<h1 id="logo"><a href="./"><img src="images/logo.png" style="height:20px;" /></a></h1>
 
 			<div id="account-bar">
 				<a href="javascript:;">
@@ -37,10 +38,11 @@
 					</div>
 				</div>
 				<div class="roles-tab">
-					<ul>
-						<li class="tab"><a href="javascript:;" class="label" data-id="label1">Label1</a></li>
-						<li class="tab last"><a href="javascript:;" class="label" data-id="label2">Label2</a></li>
+					<ul class="nav nav-tabs">
+						<li class="tab"><a href="javascript:;" data-id="lable1">Label1</a></li>
+						<li class="tab"><a href="javascript:;" data-id="lable2">Label2</a></li>
 					</ul>
+
 				</div>
 				<div id="con-menu-results">
 				</div>
@@ -53,7 +55,7 @@
 			<div id="con-main" class="with_menu">
 				<div class="tab-panel-header unselectable tab-panel-header-plain">
 					<div class="tab-strip-wrap">
-						<a class="menu-ctrl role-admin" href="javascript:;">«折起</a>
+						<a class="menu-ctrl role-admin icon-th-list" href="javascript:;"></a>
 						<ul class="tab-strip tab-strip-top">
 						</ul>
 					</div>
