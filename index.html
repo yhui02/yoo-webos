@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <title>Yoo desktop</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="css/reset.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <script data-main="script/main" src="script/require.min.js"></script>
 </head>
@@ -11,12 +12,12 @@
 <body>
 	<div id="body">
 		<div id="header">
-			<h1 id="logo"><a href="./"><img src="images/logo.png" style="height:20px;" /></a></h1>
+			<h1 id="logo"><a href="./"><img src="img/logo.png" style="height:20px;" /></a></h1>
 
 			<div id="account-bar">
 				<a href="javascript:;">
 					<span class="user-img">
-						<img class="account-icon-image" src="images/user-default.png" alt="Yohann" title="Yohann" style="padding-top: 0px; padding-bottom: 0px;"/>
+						<img class="account-icon-image" src="img/user-default.png" alt="Yohann" title="Yohann" style="padding-top: 0px; padding-bottom: 0px;"/>
 					</span>
 					<span class="user-name">Yohann</span>
 				</a>
@@ -28,21 +29,20 @@
 					<div id="buddysearch">
 						<div id="buddysearch_input_div">
 							<input name="buddysearch" id="buddysearch_input" type="text" class="blurred inner-shadow" value="Search links...">
-							<img class="sprite_icn_search_2" src="images/blank.gif" />
+							<img class="sprite_icn_search_2" src="img/blank.gif" />
 						</div>
 						<span class="dropdown">
 							<span class="main">
-								<img class="sprite_icn_add" src="images/blank.gif" />
+								<img class="sprite_icn_add" src="img/blank.gif" />
 							</span>
 						</span>
 					</div>
 				</div>
 				<div class="roles-tab">
 					<ul class="nav nav-tabs">
-						<li class="tab"><a href="javascript:;" data-id="lable1">Label1</a></li>
+						<li class="tab active"><a href="javascript:;" data-id="lable1">Label1</a></li>
 						<li class="tab"><a href="javascript:;" data-id="lable2">Label2</a></li>
 					</ul>
-
 				</div>
 				<div id="con-menu-results">
 				</div>
@@ -53,15 +53,13 @@
 			</div>
 			
 			<div id="con-main" class="with_menu">
-				<div class="tab-panel-header unselectable tab-panel-header-plain">
-					<div class="tab-strip-wrap">
-						<a class="menu-ctrl role-admin icon-th-list" href="javascript:;"></a>
-						<ul class="tab-strip tab-strip-top">
-						</ul>
+				<a class="menu-ctrl role-admin icon-th-list" href="javascript:;"></a>
+				<div id="tab-region">
+					<ul class="tab-header nav nav-tabs">
+					</ul>
+					
+					<div class="tab-content">
 					</div>
-				</div>
-				
-				<div class="tab-panel-bwrap">
 				</div>
 			</div>
 		</div>
@@ -77,24 +75,22 @@
 			<span class="item-tooltips">
 				<span class="arr-icon"></span>
 				<span class="tooltip-con">
-					<img style="margin:4px 20px 0 6px;height:84px;" src="images/user-default.png" />
-					<img style="margin:4px 4px 0 0;height:84px;" src="images/user-default.png" />
+					<img style="margin:4px 20px 0 6px;height:84px;" src="img/user-default.png" />
+					<img style="margin:4px 4px 0 0;height:84px;" src="img/user-default.png" />
 				</span>
 			</span>
 		</span>
 	</script>
 	
 	<script type="text/template" id="tab-header-template">
-		<li id="tab-header-<%= id %>" class="tab-strip-active" data-id="<%= id %>">
-			<a href="#tab/<%= id %>" class="tab-right">
-				<em class="tab-left"><span class="tab-strip-inner"><span class="tab-strip-text"><%= name %></span></span></em>
-			</a>
+		<li id="tab-header-<%= id %>" class="active" data-id="<%= id %>">
+			<a href="#tab/<%= id %>"><%= name %></a>
 		</li>
 	</script>
 	
-	<script type="text/template" id="tab-con-template">
-		<div id="tab-con-<%= id %>" data-id="<%= id %>" style="height:100%">
-			<iframe id="tab-con-iframe-<%= id %>" name="tab-con-iframe-<%= id %>" style="height:100%;width:100%;border:none;margin:0 0 1px 1px;" border="0" frameborder="0" src="<%= url %>"></iframe>
+	<script type="text/template" id="tab-pane-template">
+		<div id="tab-pane-<%= id %>" data-id="<%= id %>" style="height:100%" class="tab-pane active">
+			<iframe id="tab-pane-iframe-<%= id %>" name="tab-pane-iframe-<%= id %>" style="height:100%;width:100%;border:none;margin:0 0 1px 1px;" border="0" frameborder="0" src="<%= url %>"></iframe>
 		</div>
 	</script>
 </body>

@@ -119,23 +119,23 @@ define(function(require, exports, module) {
 		}
 		// 显示tab
 		var _tabShow = function(id) {
-			$('#tab-header-'+id).addClass('tab-strip-active').siblings().removeClass('tab-strip-active');
-			$('#tab-con-'+id).show().siblings().hide();
-		}
+			$('#tab-header-'+id).addClass('active').siblings().removeClass('active');
+			$('#tab-pane-'+id).show().siblings().hide();
+		};
 		var _tabHeaderHtml = _.template($('#tab-header-template').html())({name: name, id: id});
-		var _tabConHtml = _.template($('#tab-con-template').html())({url: url, id: id});
+		var _tabConHtml = _.template($('#tab-pane-template').html())({url: url, id: id});
 		if ($('#tab-header-'+id)[0] == undefined) {
-			$('.tab-strip-top').find('li').removeClass('tab-strip-active');
+			$('#tab-region .tab-header').find('li').removeClass('active');
 		
-			$('.tab-strip-top').append(_tabHeaderHtml);
-			$('.tab-panel-bwrap').find('>div').hide();
-			$('.tab-panel-bwrap').append(_tabConHtml);
+			$('#tab-region .tab-header').append(_tabHeaderHtml);
+			$('#tab-region .tab-content').find('>div').hide();
+			$('#tab-region .tab-content').append(_tabConHtml);
 			
 			// tab 点击事件
 			$('#tab-header-'+id).click(function(e){
 				if (e.which == 2) { // 中键点击
 					var _nextTabId;
-					if ($(this).hasClass('tab-strip-active')) {
+					if ($(this).hasClass('active')) {
 							_nextTabId = $(this).prev().attr('data-id');
 						if (_nextTabId == undefined)
 							_nextTabId = $(this).next().attr('data-id');
@@ -143,7 +143,7 @@ define(function(require, exports, module) {
 					
 					// delete this
 					$(this).remove();
-					$('#tab-con-'+id).remove();
+					$('#tab-pane-'+id).remove();
 					// open next
 					if (_nextTabId != undefined)
 						$('#con-menu-results a[data-id="'+_nextTabId+'"]').trigger('click');
@@ -161,4 +161,3 @@ define(function(require, exports, module) {
 		}
 	}
 });
-
