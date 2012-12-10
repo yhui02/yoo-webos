@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>Yoo desktop</title>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+<script src="data.json.js"></script>
+<script src="../script/library/jquery-1.8.1.min.js"></script>
+<script src="../script/library/underscore-min.js"></script>
+<script src="../script/library/backbone-min.js"></script>
+<script>
+$(function() {
+	// init
+	var _course_content_list_html = $('<table class="table table-bordered table-hover"><tbody></tbody></table>');
+	$.each(page.rows, function(i,n) {
+		_course_content_list_html.find('tbody').append( _.template($('#course-content-list-template').html())(n) );
+	})
+	$('#sec-section-content .data-list').html(_course_content_list_html);
+	
+	$('.view-type .edit').toggle(function() {
+		$(this).addClass('active');
+		$('#sec-section-content .def').addClass('hidden');
+		$('#sec-section-content .edit').removeClass('hidden');
+	},function() {
+		$(this).removeClass('active');
+		$('#sec-section-content .def').removeClass('hidden');
+		$('#sec-section-content .edit').addClass('hidden');
+	})
+})
+</script>
+
+<style>
+hr{margin:16px 0;}
+.sec-left,.sec-right{position:absolute;bottom:0;top:0;}
+.sec-left{left:0;width:246px;background-color:#fcfcfc;font-size:18px;-webkit-overflow-scrolling:touch;}
+.sec-right{left:250px;right:0;background-color:#f8f8f6;min-width:730px;overflow:auto;-webkit-overflow-scrolling:touch;}
+.sec-compart-line{position:absolute;left:250px;top:0;bottom:0;width:0px;border-left:1px solid #c3cbd1;box-shadow:1px 1px 14px 7px #ebebed}
+.welcome-info h3{text-indent:16px;}
+#sec-section-header{margin:1em 1.2em 0 20px;}
+#sec-section-header form{margin:0;}
+#sec-section-header .sec-ctrls{position:absolute;z-index:1;background:#F8F8F6;width:70%;height:32px;}
+.sec-section{position:absolute;left:0;right:0;top:61px;padding:20px;overflow:auto;bottom:0;background-color:#fff;}
+#sec-section-header .view-type{text-align:right;}
+#sec-section-content .info{color:#c0c0c0;font-weight:normal;margin-right:7.2em;}
+#sec-section-content h4 .info{margin-left:1em;}
+#sec-section-content span[class^="icon-"]{filter:alpha(opacity=50);opacity:0.5;}
+#sec-section-content span.icon-white{filter:alpha(opacity=100);opacity:1;}
+#sec-section-content .info>span{margin-right:8px;font-size:13px;display:inline-block;}
+#sec-section-content .info>span.label{font-size:88%;}
+#sec-section-content td{position:relative;}
+#sec-section-content .btn{position:absolute;right:1em;top:50%;margin-top:-15px;}
+
+/* Sidenav for Docs */
+.bs-docs-sidenav{width:216px;margin:16px auto 6px auto;padding:0;background-color:#fff;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 1px 4px rgba(0,0,0,.065);-moz-box-shadow:0 1px 4px rgba(0,0,0,.065);box-shadow:0 1px 4px rgba(0,0,0,.065);}
+.bs-docs-sidenav > li > a{display:block;*width:190px;margin:0 0 -1px;padding:12px 16px;border:1px solid #c0c0c0;}
+.bs-docs-sidenav > li:first-child > a{-webkit-border-radius:6px 6px 0 0;-moz-border-radius:6px 6px 0 0;border-radius:6px 6px 0 0;}
+.bs-docs-sidenav > li:last-child > a{-webkit-border-radius:0 0 6px 6px;-moz-border-radius:0 0 6px 6px;border-radius:0 0 6px 6px;}
+.bs-docs-sidenav > .active > a{position:relative;z-index:2;padding:9px 15px;border:0;text-shadow:0 1px 0 rgba(0,0,0,.15);-webkit-box-shadow:inset 1px 0 0 rgba(0,0,0,.1),inset -1px 0 0 rgba(0,0,0,.1);-moz-box-shadow:inset 1px 0 0 rgba(0,0,0,.1),inset -1px 0 0 rgba(0,0,0,.1);box-shadow:inset 1px 0 0 rgba(0,0,0,.1),inset -1px 0 0 rgba(0,0,0,.1);}
+
+/* Chevrons */
+.bs-docs-sidenav .icon-chevron-right{float:right;margin-top:2px;margin-right:-6px;opacity:.25;}
+.bs-docs-sidenav > li > a:hover{background-color:#f5f5f5;}
+.bs-docs-sidenav a:hover .icon-chevron-right{opacity:.5;}
+.bs-docs-sidenav .active .icon-chevron-right,
+.bs-docs-sidenav .active a:hover .icon-chevron-right{background-image:url(../img/glyphicons-halflings-white.png);opacity:1;}
+.bs-docs-sidenav.affix{top:40px;}
+.bs-docs-sidenav.affix-bottom{position:absolute;top:auto;bottom:270px;}
+</style>
+</head>
+
+<body>
+	<section class="sec-left">
+		<div class="welcome-info"><h3>iPad</h3></div>
+		<ul class="nav nav-list bs-docs-sidenav">
+			<li><a href="#typography"><i class="icon-chevron-right"></i>my course</a></li>
+			<li><a href="#typography"><i class="icon-chevron-right"></i>course store</a></li>
+			<li><a href="#code"><i class="icon-chevron-right"></i>my exam</a></li>
+		</ul>
+	</section>
+	
+	<section class="sec-right">
+		<div id="sec-section-header" class="clearfix">
+			<form class="form-search pull-left sec-ctrls">
+				<div class="btn-group">
+					<button class="btn">waite</button>
+					<button class="btn active">active</button>
+					<button class="btn">abate</button>
+					<button class="btn">done</button>
+				</div>
+				
+				<select style="width:116px;">
+					<option>--study type--</option>
+					<option>must</option>
+					<option>selective</option>
+					<option>self</option>
+				</select>
+				
+				<input type="text" class="input-medium search-query" placeholder="search" style="width:100px" />
+			</form>
+			
+			<div class="view-type">
+				<span class="btn-group">
+					<button class="btn active"><span class="icon-list"></span></button>
+					<button class="btn"><span class="icon-th"></span></button>
+				</span>
+				<span class="btn-group">
+					<button class="btn edit"><span class="icon-edit"></span></button>
+				</span>
+			</div>
+		</div>
+		
+		<hr />
+		
+		<div class="sec-section">
+			<div id="sec-section-content">
+				<div class="data-list">
+				</div>
+				<ul class="pager" style="text-align:right;position:relative">
+					<li><a href="#">Previous</a></li>
+					<li><a href="#">Next</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<div class="sec-compart-line"></div>
+	
+	<script type="text/template" id="course-content-list-template">
+		<tr>
+			<td>
+				<h4><input type="checkbox" class="edit hidden" style="vertical-align: 10%;margin-right:3px;" /><%= courseName %></h4>
+				<div class="info">
+					<span><%= courseCode %></span>
+					<span><%= shouldGetScore %>学时</span>
+					<span><%= shouldGetScore %>学分</span>
+					<span><span class="icon-ok-circle"></span><%= stepToGetScore %></span>
+					<span>/</span>
+					<span class="label">self</span>
+					<span><span class="icon-time icon-time-white"></span><%= planStartTime.substring(0, 10) %> ~ <%= planStartTime.substring(0, 10) %></span>
+					<span><span class="icon-ok-sign"></span>COURSE_PRETEST</span>
+				</div>
+				<button class="btn btn-primary def">Study <span class="icon-play-circle icon-white"></span></button>
+				<button class="btn btn-danger edit hidden" onclick="javascript:confirm('Are you sure?');">Delete <span class="icon-trash icon-white"></span></button>
+			</td>
+		</tr>
+	</script>
+</body>
+</html>

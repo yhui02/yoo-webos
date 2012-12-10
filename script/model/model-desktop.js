@@ -61,7 +61,8 @@ define(function(require, exports, module) {
 			$('#con-menu-results a.menu-item-link').click(function(e){
 				var _id = $(this).attr('data-id');
 				//exports.tabRender(_id);
-				location.hash = '#tab/' + _id;
+				//location.hash = '#tab/' + _id;
+				T.router.navigate('tab/'+_id, true);
 				// style
 				$(this).parent().parent().find('.menu-item-link').removeClass('active');
 				$(this).addClass('active');
@@ -74,7 +75,8 @@ define(function(require, exports, module) {
 			})
 			// 初始 tab
 			if (location.hash == '' || location.hash == '#') {
-				location.hash = '#tab/' + $('.menu-item-link:first').attr('data-id');
+				var firstTabId = $('.menu-item-link:first').attr('data-id');
+				T.router.navigate('tab/' + firstTabId, true);
 			}
 			
 			T.inputDefaultValue('buddysearch_input');
@@ -124,7 +126,7 @@ define(function(require, exports, module) {
 		};
 		var _tabHeaderHtml = _.template($('#tab-header-template').html())({name: name, id: id});
 		var _tabConHtml = _.template($('#tab-pane-template').html())({url: url, id: id});
-		if ($('#tab-header-'+id)[0] == undefined) {
+		if ($('#tab-header-'+id)[0] == undefined) { // 不存在时，创建
 			$('#tab-region .tab-header').find('li').removeClass('active');
 		
 			$('#tab-region .tab-header').append(_tabHeaderHtml);
@@ -136,9 +138,9 @@ define(function(require, exports, module) {
 				if (e.which == 2) { // 中键点击
 					var _nextTabId;
 					if ($(this).hasClass('active')) {
-							_nextTabId = $(this).prev().attr('data-id');
-						if (_nextTabId == undefined)
 							_nextTabId = $(this).next().attr('data-id');
+						if (_nextTabId == undefined)
+							_nextTabId = $(this).prev().attr('data-id');
 					}
 					
 					// delete this
@@ -156,7 +158,7 @@ define(function(require, exports, module) {
 				else
 					bodyObj.addClass('fullScreen');
 			})
-		} else {
+		} else { // 已存在，打开
 			_tabShow(id);
 		}
 	}

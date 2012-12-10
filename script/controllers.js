@@ -1,5 +1,7 @@
-define(function() {
-	return [ {
+'use strict';
+
+var items = [
+	{
 		id : 'a1',
 		name : '百度',
 		title : '百度',
@@ -65,6 +67,35 @@ define(function() {
 		title : 'test',
 		url : 'html/index.html',
 		type : 'iframe'
-	} ];
+	}
+];
+
+/* Controllers */
+function TabLoadCtrl($scope, $routeParams) {
+	var id = $routeParams.id;
+	var tab;
+	for(var i in items) {
+		if (items[i].id == id) {
+			tab = items[i];
+			break;
+		}
+	}
+	$scope.tab = tab;
+}
+
+function ItemListCtrl($scope) {
+	$scope.items = items;
 	
-});
+	$scope.test = function(){
+		for(var i in items) {
+			if (items[i].id == 'a1') {
+				items[i].name += '+';
+				break;
+			}
+		}
+	}
+	
+	$scope.test2 = function(){
+		alert('test2')
+	}
+}

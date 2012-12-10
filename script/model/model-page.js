@@ -49,14 +49,12 @@ define(function(require, exports, module) {
 		o.ajaxHelper = function() {
 			var loadingId = '__loading';
 			var loadingEle = $('<div>').attr('id', loadingId)
-				.html('loading...')
+				.html('<img src="../img/flyingdots.gif" />')
 				.css({
 					display: 'none',
 					position: 'fixed',
-					top: 0,
-					right: 0,
-					backgroundColor: 'DD4B39',
-					padding: '1px 8px'
+					top: '-5px',
+					left: '160px'
 				});
 			$('body').append(loadingEle);
 			

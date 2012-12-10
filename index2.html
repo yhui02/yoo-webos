@@ -1,12 +1,13 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" ng-app="phonecat">
 <head>
 <meta charset="utf-8" />
 <title>Yoo desktop</title>
-<link rel="stylesheet" type="text/css" href="css/reset.css" />
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
-<script data-main="script/main" src="script/require.min.js"></script>
+<script src="script/library/angular/angular.js"></script>
+<script src="script/app.js"></script>
+<script src="script/controllers.js"></script>
 </head>
 
 <body>
@@ -24,11 +25,11 @@
 			</div>
 		</div>
 		<div id="content">
-			<div id="con-menu" class="shadow blurred no-app">
+			<div id="con-menu" class="shadow blurred no-app" ng-controller="ItemListCtrl">
 				<div id="con-menu-header">
 					<div id="buddysearch">
 						<div id="buddysearch_input_div">
-							<input name="buddysearch" id="buddysearch_input" type="text" class="blurred inner-shadow" value="Search links..." x-webkit-speech x-webkit-grammar="builtin:translate" onwebkitspeechchange="" />
+							<input name="buddysearch" id="buddysearch_input" type="text" class="blurred inner-shadow" value="Search links..." x-webkit-speech lang="zh-CN" />
 							<img class="sprite_icn_search_2" src="img/blank.gif" />
 						</div>
 						<span class="dropdown">
@@ -41,18 +42,29 @@
 				<div class="roles-tab">
 					<ul class="nav nav-tabs">
 						<li class="tab active"><a href="javascript:;" data-id="lable1">Label1</a></li>
-						<li class="tab"><a href="javascript:;" data-id="lable2">Label2</a></li>
+						<li class="tab"><a href="javascript:;" data-id="lable2" ng-click="test2()">Label2</a></li>
 					</ul>
 				</div>
 				<div id="con-menu-results">
+					<span class="menu-item" ng-repeat="i in items">
+						<a class="menu-item-link" href="#/tab/{{i.id}}" data-id="{{i.id}}">{{i.name}}</a>
+						<span class="item-tooltips">
+							<span class="arr-icon"></span>
+							<span class="tooltip-con">
+								<img style="margin:4px 20px 0 6px;height:84px;" src="img/user-default.png" />
+								<img style="margin:4px 4px 0 0;height:84px;" src="img/user-default.png" />
+							</span>
+						</span>
+					</span>
 				</div>
 				
 				<div id="con-menu-footer">
-					<span>OTHER</span>
+					<span ng-click="test()">OTHER</span>
 				</div>
 			</div>
 			
-			<div id="con-main" class="with_menu">
+			<div id="con-main" class="with_menu" ng-view>
+				<!--
 				<button class="menu-ctrl role-admin btn btn-small"><span class="icon-th-list" href="javascript:;"></a>&nbsp;</button>
 				<div id="tab-region">
 					<ul class="tab-header nav nav-tabs">
@@ -61,26 +73,14 @@
 					<div class="tab-content">
 					</div>
 				</div>
+				-->
 			</div>
 		</div>
 		<div id="footer">
-			<span class="info">&copy;CopyRight 2012</span>
+			<span class="info">&copy;CopyRight <script>document.write(new Date().getFullYear())</script></span>
 		</div>
 	</div>
 	
-	
-	<script type="text/template" id="menu-item-template">
-		<span class="menu-item">
-			<a class="menu-item-link" href="<%= url %>" data-id="<%= id %>"><%= name %></a>
-			<span class="item-tooltips">
-				<span class="arr-icon"></span>
-				<span class="tooltip-con">
-					<img style="margin:4px 20px 0 6px;height:84px;" src="img/user-default.png" />
-					<img style="margin:4px 4px 0 0;height:84px;" src="img/user-default.png" />
-				</span>
-			</span>
-		</span>
-	</script>
 	
 	<script type="text/template" id="tab-header-template">
 		<li id="tab-header-<%= id %>" class="active" data-id="<%= id %>">

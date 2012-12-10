@@ -78,7 +78,8 @@ define(function(require, exports, module) {
 			}
 		});
 		var app_router = new AppRouter;
-		B.history.start();
+		B.history.start({pushState: false});
+		T.router = app_router;
 	});
 	
 	/*

@@ -1,5 +1,4 @@
-define(function() {
-	return [ {
+	[ {
 		id : 'a1',
 		name : '百度',
 		title : '百度',
@@ -66,5 +65,3 @@ define(function() {
 		url : 'html/index.html',
 		type : 'iframe'
 	} ];
-	
-});
