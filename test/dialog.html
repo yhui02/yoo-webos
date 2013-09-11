@@ -1,0 +1,25 @@
+<button id="draggableDialog">Draggable dialog</button>
+
+<script type="text/javascript" src="js/modern/dialog.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#draggableDialog').click(function(e) {
+            $.Dialog({
+                'title'      : 'My draggable dialog',
+                'content'    : 'This content can be in HTML.<br />You can add custom function to your buttons!<br /><br /><b>Features:</b><ul><li>Easy to use!</li><li>Customizable</li><li>Powerful!</li></ul>',
+                //'overlay'    : false,
+                'draggable'  : true,
+                'closeButton': true,
+                'buttonsAlign': 'right',
+                'buttons'    : {
+                    'Ok'    : {
+                        'action': function(){}
+                    },
+                    'Cancel'     : {
+                        'action': function(){}
+                    }
+                }
+            });
+        });
+    });
+</script>

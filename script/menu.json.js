@@ -17,13 +17,7 @@ define(function() {
 		title : '测试3',
 		url : 'http://ting.baidu.com/player/index.html#loaded',
 		type : 'iframe'
-	}, {
-		id : 'a4',
-		name : 'Google Music',
-		title : '来自谷歌中国',
-		url : 'http://g.top100.cn/16667639/html/player.html#loaded',
-		type : 'iframe'
-	}, {
+	},{
 		id : 'a5',
 		name : 'Todo',
 		title : '来自Evernote',

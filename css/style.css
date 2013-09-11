@@ -4,7 +4,7 @@ img{border:none;}
 
 div#body{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;background-color:white;}
 div#header{height:40px;line-height:36px;background:-webkit-gradient(linear,0% 0%,0% 100%,from(#454545),to(#383838),color-stop(0.6,#0F0F0F));background:#0F0F0F url(../img/header-bg.png) repeat-x;color:#777;box-shadow:0 4px 16px #E5E5E5;}
-#logo{font-size:26px;font-weight:bold;text-indent:8px;width:200px;color:#2396d3;float:left;margin-top:4px;line-height:30px}
+#logo{font-size:26px;font-weight:bold;text-indent:8px;width:200px;color:#ddd;float:left;margin-top:6px;line-height:30px;font-family: sans-serif}
 #account-bar{right:10px;position:absolute;width:120px;text-align:right;line-height:100%;}
 #account-bar .account-icon-image{height:27px;line-height:40px;margin-top:6px;}
 #account-bar a{color:#b1b1b1;}

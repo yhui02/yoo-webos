@@ -1,0 +1,58 @@
+<div class="text-center padding20">
+	<button id="signBtn" class="big default">
+		我来了，签到 <i class="icon-enter icon-large"></i>
+	</button>
+</div>
+<table>
+	<tr>
+		<td><a href="">12</a></td>
+		<td>11</td>
+		<td>10</td>
+		<td>9</td>
+		<td>8</td>
+		<td>7</td>
+		<td>6</td>
+		<td>5</td>
+		<td>4</td>
+		<td>3</td>
+		<td>2</td>
+		<td>1</td>
+	</tr>
+</table>
+
+
+<table class="bordered">
+	<thead>
+		<tr>
+			<th>日期</th>
+			<th class="right">签到时间</th>
+			<th class="right">状态</th>
+			<th class="right">备注</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>2013-2-5</td><td class="right">0:00:01</td><td class="right">0,1 Mb</td><td class="right">无</td>
+		</tr>
+		<tr>
+			<td>2013-2-4</td><td class="right">0:00:01</td><td class="right">0,1 Mb</td><td class="right">无</td>
+		</tr>
+		<tr>
+			<td>2013-2-3</td><td class="right">0:00:01</td><td class="right">0,1 Mb</td><td class="right">无</td>
+		</tr>
+		<tr>
+			<td>2013-2-2</td><td class="right">0:00:01</td><td class="right">0,1 Mb</td><td class="right">无</td>
+		</tr>
+		<tr>
+			<td>2013-2-1</td><td class="right">0:00:01</td><td class="right">0,1 Mb</td><td class="right">无</td>
+		</tr>
+	</tbody>
+
+	<tfoot></tfoot>
+</table>
+
+<script>
+	$('#signBtn').click(function(){
+		$(this).html('已签到').addClass('disabled').removeClass('default');
+	})
+</script>
